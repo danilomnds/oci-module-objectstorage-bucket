@@ -28,7 +28,7 @@ variable "kms_key_id" {
 }
 
 variable "metadata" {
-  type    = string
+  type    = map(string)
   default = null
 }
 
@@ -67,7 +67,7 @@ variable "versioning" {
   default = null
 }
 
-variable "azure_ad_groups" {
+variable "groups" {
   type    = list(string)
   default = null
 }
@@ -81,3 +81,23 @@ variable "enable_group_access" {
   type    = bool
   default = true
 }
+
+/*
+variable "region_gru" {
+  description = "OCI Region GRU to deploy the resources"
+}
+
+variable "tenancy_ocid" {
+  description = "required for compartment tree search"  
+}
+variable "user_ocid" {
+  description = "Terraform user"
+}
+variable "fingerprint" {
+  description = "Terraform user fingerprint"
+}
+variable "private_key_path" {
+  type        = string
+  description = "Terraform user private_key_path"
+}
+*/  

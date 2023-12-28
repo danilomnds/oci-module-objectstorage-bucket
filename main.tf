@@ -27,22 +27,23 @@ resource "oci_objectstorage_bucket" "bucket" {
   versioning   = var.versioning
   lifecycle {
     ignore_changes = [
-      defined_tags["create_date"]
+      defined_tags["IT.create_date"]
     ]
   }
 }
 
 resource "oci_identity_policy" "bucket_policy" {
+  #provider            = oci.oci-gru
   depends_on = [oci_objectstorage_bucket.bucket]
   for_each = {
-    for group in var.azure_ad_groups : group => group
-    if var.enable_group_access && var.azure_ad_groups != []
+    for group in var.groups : group => group
+    if var.enable_group_access && var.groups != []
   }
   compartment_id = var.compartment_id
   name           = "policy_${var.name}"
-  description    = "policy para permitir acesso de leitura e escrita no bucket"
+  description    = "allow one or more groups to manage objects inside a bucket"
   statements = [
-    "Allow group ${var.azure_ad_groups} to read buckets in compartment ${var.compartment}",
-    "Allow group ${var.azure_ad_groups} to manage objects in compartment ${var.compartment}"
+    "Allow group ${each.value} to read buckets in compartment ${var.compartment}",
+    "Allow group ${each.value} to manage objects in compartment ${var.compartment}"
   ]
 }
