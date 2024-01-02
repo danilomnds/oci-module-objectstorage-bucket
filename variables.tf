@@ -82,13 +82,14 @@ variable "enable_group_access" {
   default = true
 }
 
-/*
-variable "region_gru" {
-  description = "OCI Region GRU to deploy the resources"
+
+/* if you are not going to deploy the resource in your home region you have to uncomment this part of the code
+variable "home_region" {
+  description = "When policies are created using terraform you have to specify your home region"
 }
 
 variable "tenancy_ocid" {
-  description = "required for compartment tree search"  
+  description = "Required for compartment tree search"  
 }
 variable "user_ocid" {
   description = "Terraform user"
@@ -100,4 +101,4 @@ variable "private_key_path" {
   type        = string
   description = "Terraform user private_key_path"
 }
-*/  
+*/

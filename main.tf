@@ -33,7 +33,7 @@ resource "oci_objectstorage_bucket" "bucket" {
 }
 
 resource "oci_identity_policy" "bucket_policy" {
-  #provider            = oci.oci-gru
+  #provider            = oci.oci-home-region
   depends_on = [oci_objectstorage_bucket.bucket]
   for_each = {
     for group in var.groups : group => group

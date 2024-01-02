@@ -19,7 +19,7 @@ Note: The `?ref=***` refers a tag on the git module repo.
 ## Default use case plus RBAC
 ```hcl
 module "osb-<region>-<env>-<system>-<id>" {    
-  source = "git::https://github.com/danilomnds/oci-module-objectstorage-bucket?ref=v1.0.0" 
+  source = "git::https://github.com/danilomnds/terraform-oci-objectstorage-bucket?ref=v1.0.0" 
   compartment_id = <compartment id>
   name = "osb-vcp-prd-coe-001"
   namespace = <namespace>
@@ -41,7 +41,7 @@ output "bucket-id" {
 ## Custom use case plus RBAC
 ```hcl
 module "osb-<region>-<env>-<system>-<id>" {    
-  source = "git::https://github.com/danilomnds/oci-module-objectstorage-bucket?ref=v1.0.0" 
+  source = "git::https://github.com/danilomnds/terraform-oci-objectstorage-bucket?ref=v1.0.0" 
   compartment_id = <compartment id>
   name = "osb-vcp-prd-coe-001"
   namespace = <namespace>
@@ -71,7 +71,7 @@ output "bucket-id" {
 ## Use case without RBAC
 ```hcl
 module "osb-<region>-<env>-<system>-<id>" {    
-  source = "git::https://github.com/danilomnds/oci-module-objectstorage-bucket?ref=v1.0.0" 
+  source = "git::https://github.com/danilomnds/terraform-oci-objectstorage-bucket?ref=v1.0.0" 
   compartment_id = <compartment id>
   name = "osb-vcp-prd-coe-001"
   namespace = <namespace> 
@@ -108,7 +108,7 @@ output "bucket-id" {
 | groups | list of azure AD groups that will manage objects inside the bucket | `list(string)` | n/a | No |
 | compartment | the compartment name where the policy will be created | `string` | n/a | No |
 | enable_group_access | should the policy be created? | `bool` | `true` | No |
-| region_gru | home region for policy creation | `string` | n/a | No |
+| home_region | home region for policy creation | `string` | n/a | No |
 | tenancy_ocid | required for compartment tree search | `string` | n/a | No |
 | user_ocid | Terraform user | `string` | n/a | No |
 | fingerprint | Terraform user fingerprint | `string` | n/a | No |
