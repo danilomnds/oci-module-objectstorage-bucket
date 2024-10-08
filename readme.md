@@ -105,9 +105,8 @@ output "bucket-id" {
 | retention_rules | a block as defined below | `object({})` | n/a | No |
 | storage_tier | The type of storage tier of this bucket | `string` | n/a | No |
 | versioning | Set the versioning status on the bucket | `string` | n/a | No |
-| groups | list of azure AD groups that will manage objects inside the bucket | `list(string)` | n/a | No |
+| groups | list of azure AD groups that will manage objects inside the bucket | `list(string)` | `[]` | No |
 | compartment | the compartment name where the policy will be created | `string` | n/a | No |
-| enable_group_access | should the policy be created? | `bool` | `true` | No |
 | home_region | home region for policy creation | `string` | n/a | No |
 | tenancy_ocid | required for compartment tree search | `string` | n/a | No |
 | user_ocid | Terraform user | `string` | n/a | No |

@@ -14,7 +14,7 @@ resource "oci_objectstorage_bucket" "bucket" {
     content {
       display_name = retention_rules.value.display_name
       dynamic "duration" {
-        for_each = retention_rules.value.duration
+        for_each = retention_rules.value.duration != null ? [retention_rules.value.duration] : []
         content {
           time_amount = duration.value.time_amount
           time_unit   = duration.value.time_unit
@@ -33,11 +33,11 @@ resource "oci_objectstorage_bucket" "bucket" {
 }
 
 resource "oci_identity_policy" "bucket_policy" {
-  #provider            = oci.oci-home-region
+  #provider            = oci.oci-gru
   depends_on = [oci_objectstorage_bucket.bucket]
   for_each = {
     for group in var.groups : group => group
-    if var.enable_group_access && var.groups != []
+    if  var.groups != [] && var.compartment != null
   }
   compartment_id = var.compartment_id
   name           = "policy_${var.name}"

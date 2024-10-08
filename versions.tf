@@ -3,17 +3,15 @@ terraform {
   required_providers {
     oci = {
       source  = "oracle/oci"
-      version = "5.23.0"
+      version = ">= 5.23.0"
     }
   }
 }
 
-/* if you're going to create the resource out of your home region
-provider "oci" {  
-  alias            = "oci-home-region"
-  tenancy_ocid     = var.tenancy_ocid
-  user_ocid        = var.user_ocid
-  fingerprint      = var.fingerprint
-  private_key_path = var.private_key_path
-  region           = var.home_region
+# if you are deploying the resource outside your home region uncomment this part of the code
+/*
+provider "oci" {
+  alias        = "oci-gru"
+  tenancy_ocid = "<your id>"
+  region       = "<region name>"
 }*/

@@ -69,19 +69,13 @@ variable "versioning" {
 
 variable "groups" {
   type    = list(string)
-  default = null
+  default = []
 }
 
 variable "compartment" {
   type    = string
   default = null
 }
-
-variable "enable_group_access" {
-  type    = bool
-  default = true
-}
-
 
 /* if you are not going to deploy the resource in your home region you have to uncomment this part of the code
 variable "home_region" {
